@@ -1,0 +1,288 @@
+/* Enhanced styles for Robert Prisacariu's portfolio website */
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #F8F9FC; /* Slightly lighter background for a cleaner look */
+    color: #1e293b;
+    scroll-behavior: smooth;
+}
+
+/* Keep Navigation Styles as is */
+#navbar {
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.nav-link {
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #4f46e5;
+    transition: width 0.2s ease;
+}
+
+.nav-link:hover:after, .nav-link.active:after {
+    width: 100%;
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, #352f9d 0%, #4646e5 100%);
+}
+
+@media (min-width: 1024px) {
+    #navbar {
+        background: transparent;
+    }
+    .glass-nav {
+        background: rgba(255, 255, 255, 0.8); /* Increased opacity for better readability */
+        backdrop-filter: blur(15px); /* Enhanced blur effect */
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 9999px;
+        padding: 0.5rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    }
+    .nav-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .nav-link {
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        margin: 0 0.25rem;
+        color: #1f2937;
+    }
+    .nav-link:hover, .nav-link.active {
+        background: rgba(0, 0, 0, 0.05);
+    }
+    .nav-link:after {
+        display: none;
+    }
+    .resume-btn {
+        border-radius: 9999px;
+        padding: 0.5rem 1.5rem;
+        background: #4f46e5;
+        color: #ffffff;
+        box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3); /* Button shadow */
+    }
+    .resume-btn:hover {
+        background: #3730a3;
+        transform: translateY(-1px); /* Slight lift effect */
+        box-shadow: 0 4px 8px rgba(79, 70, 229, 0.4); /* Enhanced shadow on hover */
+    }
+    .scrolled .glass-nav {
+        transform: scale(0.95);
+    }
+}
+
+/* Enhanced Section Styles */
+.section-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background: #4338ca;
+    bottom: 0;
+    left: 0;
+    border-radius: 3px;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Improved Card Styles */
+section.bg-white {
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Enhanced Profile Image Styles */
+
+/* Simple fix for profile image - removes purple frame and straightens image */
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 0.75rem;
+    padding: 0; /* Remove padding that created the purple border */
+    background: none; /* Remove the purple gradient background */
+    overflow: hidden;
+    /* Simple shadow for depth */
+    transform: rotate(0); /* Make image straight - no rotation */
+}
+
+.profile-img-container img {
+    border-radius: 0.75rem;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Remove any ::after elements that might be adding effects */
+.profile-img-container::after {
+    display: none;
+}
+
+/* Enhanced Skill Pills */
+.skill-pill {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.skill-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(67, 56, 202, 0.15);
+    background-color: rgba(79, 70, 229, 0.15);
+}
+
+/* Enhanced Timeline Styles */
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 3rem;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: #e5e7eb;
+}
+
+.timeline-item:after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: #4338ca;
+    border: 2px solid white;
+    box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.2);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item:last-child:before {
+    height: 0;
+}
+
+/* Enhanced Project Card Styles */
+.project-card {
+    background-color: white;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Hide Scrollbar for Carousel */
+.overflow-x-auto {
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+}
+
+/* Enhanced Footer Styles */
+footer {
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Call to Action section enhancement */
+section.bg-gradient-to-r {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-image: linear-gradient(135deg, #4338ca, #6366f1);
+    overflow: hidden;
+    position: relative;
+}
+
+section.bg-gradient-to-r::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+    z-index: 0;
+}
+
+/* Button Enhancements */
+.contact-button, .inline-flex {
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover, a.inline-flex:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Additional Enhancements */
+.p-6.rounded-lg.bg-gray-50.border-l-4 {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.p-6.rounded-lg.bg-gray-50.border-l-4:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    background-color: #fafafa;
+}
+
+/* Improved typography for better readability */
+p.text-gray-700, p.text-gray-600 {
+    line-height: 1.7;
+}
+

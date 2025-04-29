@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Portfolio of Robert Prisacariu, Applied Computer Science specialist with expertise in AI, web development, and app development">
+    <title>Robert Prisacariu | Applied Computer Science Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav id="navbar" class="fixed w-full z-10 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="lg:hidden flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <span class="text-xl font-medium tracking-tight text-gray-900">Robert Prisacariu</span>
+                        <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">ACS</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex lg:items-center nav-container">
+                    <div class="glass-nav">
+                        <a href="index.html" class="flex items-center">
+                            <span class="text-xl font-medium tracking-tight text-gray-900">Robert Prisacariu</span>
+                            <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">ACS</span>
+                        </a>
+                        <div class="flex items-center">
+                            <a href="index.html" class="nav-link active text-sm font-medium">Home</a>
+                            <a href="about.html" class="nav-link text-sm font-medium">About</a>
+                            <a href="projects.html" class="nav-link text-sm font-medium">Projects</a>
+                            <a href="contact.html" class="nav-link text-sm font-medium">Contact</a>
+                            <a href="resume.pdf" class="resume-btn mlgym-3 inline-flex items-center text-sm font-medium rounded transition-all duration-300">
+                                Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:hidden flex items-center">
+                    <button type="button" class="text-gray-600 hover:text-indigo-600 p-2 rounded-md focus:outline-none" onclick="toggleMenu()">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="index.html" class="nav-link active block px-3 py-2 rounded text-base font-medium bg-indigo-50 text-indigo-700">Home</a>
+                <a href="about.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">About</a>
+                <a href="projects.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Projects</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Contact</a>
+                <a href="resume.pdf" class="mt-3 block w-full px-4 py-2 text-center font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700">
+                    Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <section class="hero-gradient rounded-lg p-8 mb-16 fade-in" id="hero-section">
+            <div class="flex flex-col md:flex-row md:items-center">
+                <div class="md:w-3/4 pr-0 md:pr-8">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">Robert Prisacariu</h1>
+                    <h2 class="text-xl font-medium mb-6 text-indigo-200">Applied Computer Science Specialist</h2>
+                    <p class="text-base leading-relaxed text-gray-200 mb-8">
+                        As a 21-year-old Romanian student at Thomas More University in Belgium, I specialize in AI solutions, web development, and app development, blending technical expertise with creative problem-solving.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="projects.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none transition-all duration-300">
+                            View Projects
+                        </a>
+                        <a href="contact.html" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded text-gray-200 bg-transparent hover:bg-gray-700 focus:outline-none transition-all duration-300">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/4 mt-8 md:mt-0">
+                    <div class="bg-white p-1 rounded shadow-md">
+                        <img src="hero.png" alt="Robert Prisacariu" class="rounded object-cover w-full h-auto" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-in">
+            <h2 class="section-heading text-2xl font-medium mb-8 text-gray-900">Core Expertise</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="skill-card bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-50 rounded-full p-3 mr-4">
+                            <i class="fas fa-code text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Web Development</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">HTML5, CSS, JavaScript,Swift,Tailwind CSS, Bootstrap, Livewire</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">HTML5</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CSS</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-50 rounded-full p-3 mr-4">
+                            <i class="fas fa-server text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Backend & Databases</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">PHP, Laravel, Java, .NET, Python,SQL, NoSQL, IoT integration</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">PHP</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Laravel</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px2 py-1 rounded">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-50 rounded-full p-3 mr-4">
+                            <i class="fas fa-brain text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">AI & Machine Learning</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Python, TensorFlow, APIs for open-source ML models, data analysis</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Python</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">ML</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">API</span>
+                    </div>
+                </div>
+                <div class="skill-card bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-50 rounded-full p-3 mr-4">
+                            <i class="fas fa-mobile-alt text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">App Development</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">React Native for cross-platform apps, Swift for iOS, and Android development with Java/Kotlin</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">React Native</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Swift</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Android</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16 fade-in">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 bg-indigo-600 text-white rounded-2xl">
+                <div class="text-center p-8  fade-in">
+                    <p class="text-3xl font-bold ">10+</p>
+                    <p class="text-sm text-gray-300 mt-1">Projects Completed</p>
+                </div>
+                <div class="text-center p-8 fade-in">
+                    <p class="text-3xl font-bold ">3</p>
+                    <p class="text-sm text-gray-300 mt-1">Years Experience</p>
+                </div>
+                <div class="text-center p-8 fade-in">
+                    <p class="text-3xl font-bold ">5</p>
+                    <p class="text-sm text-gray-300 mt-1">Industry Technologies</p>
+                </div>
+                <div class="text-center p-8 fade-in">
+                    <p class="text-3xl font-bold ">3</p>
+                    <p class="text-sm text-gray-300 mt-1">Languages</p>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16 fade-in">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="section-heading text-2xl font-medium text-gray-900">Featured Projects</h2>
+                <a href=" XO projects.html" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                    View all projects
+                    <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            <div class="overflow-x-auto pb-4">
+                <div class="flex space-x-6 min-w-max">
+                    <!-- Project Card 1: BRAGI -->
+                    <a href="projects/bragi.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('images/bragi.png');">
+                        <div class="absolute top-0 left-0 p-6 text-white">
+                            <span class="inline-block text-xs font-semibold tracking-wider uppercase">New</span>
+                        </div>
+                    </a>
+                    <!-- Project Card 2: SecureApp -->
+                    <a href="projects/secureapp.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('images/subtruck.png');">
+                    </a>
+                    <!-- Project Card 4: DataVis -->
+                    <a href="projects/datavis.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('images/lstb.png');">
+                        <div class="absolute top-0 left-0 p-6 text-white">
+                        </div>
+                    </a>
+                    <!-- Project Card 3: Portfolio Site -->
+                    <a href="projects/portfolio.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('images/thomasmoresmo3.png');">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-indigo-600 rounded-lg p-8 text-white fade-in">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl font-medium mb-4">Available for Professional Opportunities</h2>
+                <p class="text-indigo-100 mb-6">Currently available for freelance work and academic collaborations.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html" class="px-6 py-3 bg-white text-indigo-700 rounded font-medium hover:bg-gray-100 transition-all duration-300">
+                        Contact Me
+                    </a>
+                    <a href="resume.pdf" class="px-6 py-3 bg-transparent border border-white text-white rounded font-medium hover:bg-indigo-500 transition-all duration-300">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 bg-gray-900 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-white text-lg font-medium mb-2">Robert Prisacariu</p>
+                    <p class="text-gray-400 text-sm">Applied Computer Science Specialist</p>
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="https://github.com/" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://twitter.com/" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="mailto:contact@robertprisacariu.com" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Robert Prisacariu. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-white text-sm">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

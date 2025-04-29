@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Robert Prisacariu - Applied Computer Science specialist with expertise in AI, web development, and app development">
+    <title>About Me | Robert Prisacariu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-10 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="lg:hidden flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <span class="text-xl font-medium tracking-tight text-gray-900">Robert Prisacariu</span>
+                        <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">ACS</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex lg:items-center nav-container">
+                    <div class="glass-nav">
+                        <a href="index.html" class="flex items-center">
+                            <span class="text-xl font-medium tracking-tight text-gray-900">Robert Prisacariu</span>
+                            <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">ACS</span>
+                        </a>
+                        <div class="flex items-center">
+                            <a href="index.html" class="nav-link text-sm font-medium">Home</a>
+                            <a href="about.html" class="nav-link active text-sm font-medium">About</a>
+                            <a href="projects.html" class="nav-link text-sm font-medium">Projects</a>
+                            <a href="contact.html" class="nav-link text-sm font-medium">Contact</a>
+                            <a href="resume.pdf" class="resume-btn ml-3 inline-flex items-center text-sm font-medium rounded transition-all duration-300">
+                                Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:hidden flex items-center">
+                    <button type="button" class="text-gray-600 hover:text-indigo-600 p-2 rounded-md focus:outline-none" onclick="toggleMenu()">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Home</a>
+                <a href="about.html" class="nav-link active block px-3 py-2 rounded text-base font-medium bg-indigo-50 text-indigo-700">About</a>
+                <a href="projects.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Projects</a>
+                <a href="contact.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Contact</a>
+                <a href="resume.pdf" class="mt-3 block w-full px-4 py-2 text-center font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700">
+                    Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <!-- Page Title -->
+        <div class="mb-8 text-center fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">About <span class="text-indigo-600">Me</span></h1>
+            <p class="mt-4 text-xl text-gray-600">Get to know my journey, skills, and aspirations</p>
+        </div>
+        
+        <!-- Profile Section -->
+        <!-- Profile Section with Enhanced Image Container -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-10 fade-in">
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/3 flex justify-center lg:justify-start mb-8 lg:mb-0">
+                    <div class="profile-img-container">
+                        <img src="hero.png" alt="Robert Prisacariu" class="w-64 h-80 object-cover">
+                    </div>
+                </div>
+                <div class="lg:w-2/3 lg:pl-10">
+                    <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900">Who I Am</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        I'm Robert Prisacariu, a 21-year-old Romanian student pursuing Applied Computer Science at Thomas More University in Geel, Belgium. My passion for technology spans across multiple domains, driven by a curiosity to understand how systems work and how they can be improved.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                        What sets me apart is my interdisciplinary approach – combining technical skills with creative problem-solving. Through my academic journey and personal projects, I've developed expertise in web development, AI solutions, and app development practices.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <a href="https://linkedin.com/in/prisacariu-robert" target="_blank" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300">
+                            <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900 transition duration-300">
+                            <i class="fab fa-github mr-2"></i> GitHub
+                        </a>
+                        <a href="mailto:contact@robertprisacariu.com" class="inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-gray-700 rounded-md hover:bg-gray-50 transition duration-300">
+                            <i class="fas fa-envelope mr-2"></i> Email Me
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Languages</h3>
+                            <ul class="space-y-1 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-indigo-600 mr-2"></i> English (Fluent)
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-indigo-600 mr-2"></i> Romanian (Native)
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-indigo-600 mr-2"></i> Dutch (Fluent)
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Education</h3>
+                            <ul class="space-y-1 text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-graduation-cap text-indigo-600 mr-2"></i> Applied Computer Science
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-university text-indigo-600 mr-2"></i> Thomas More University
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- What Drives Me Section -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900">What Drives Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-lg bg-gray-50 border-l-4 border-indigo-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-lightbulb text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium text-gray-900">Passion for Technology</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        I chose Applied Computer Science for its perfect blend of theory and hands-on practice. The diversity of this field, from AI platforms to app development, constantly inspires me to learn and grow.
+                    </p>
+                </div>
+                <div class="p-6 rounded-lg bg-gray-50 border-l-4 border-indigo-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-code-branch text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium text-gray-900">Problem Solving</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        I find deep satisfaction in breaking down complex challenges into manageable components and building elegant solutions. This analytical approach helps me tackle even the most intricate technical obstacles.
+                    </p>
+                </div>
+                <div class="p-6 rounded-lg bg-gray-50 border-l-4 border-indigo-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-rocket text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium text-gray-900">Future Innovation</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        My aspiration is to become a full-stack developer, building intelligent, user-friendly applications. I aim to lead projects that leverage modern technologies to solve real-world challenges with tangible impact.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- My Skills Section -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900">My Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12 mb-8">
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 flex items-center">
+                        <i class="fas fa-code text-indigo-600 mr-2"></i> Web Development
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">HTML5</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">CSS3</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">JavaScript</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Tailwind CSS</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Bootstrap</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Livewire</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 flex items-center">
+                        <i class="fas fa-server text-indigo-600 mr-2"></i> Backend & Databases
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">PHP</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Laravel</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Java</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">.NET</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Python</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">SQL</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">NoSQL</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 flex items-center">
+                        <i class="fas fa-brain text-indigo-600 mr-2"></i> AI & Machine Learning
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Python</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">TensorFlow</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">ML APIs</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Data Analysis</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 flex items-center">
+                        <i class="fas fa-mobile-alt text-indigo-600 mr-2"></i> App Development
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">React Native</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Swift</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Android</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Java</span>
+                        <span class="skill-pill px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">Kotlin</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hobbies -->
+            <div class="mt-10">
+                <h3 class="text-lg font-medium text-gray-900 mb-3">Hobbies & Interests</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-pill px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm flex items-center">
+                        <i class="fas fa-mobile-alt mr-2 text-indigo-600"></i> Mobile App Development
+                    </span>
+                    <span class="skill-pill px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm flex items-center">
+                        <i class="fas fa-palette mr-2 text-indigo-600"></i> UI/UX Design
+                    </span>
+                    <span class="skill-pill px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm flex items-center">
+                        <i class="fas fa-robot mr-2 text-indigo-600"></i> ML Model Exploration
+                    </span>
+                    <span class="skill-pill px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm flex items-center">
+                        <i class="fas fa-code-branch mr-2 text-indigo-600"></i> Open Source Contribution
+                    </span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Professional Experience Section -->
+        <section class="bg-white rounded-xl shadow-sm p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-8 text-gray-900">Professional Journey</h2>
+            
+            <div class="pl-6">
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-md">2023-Present</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900">Applied Computer Science</h3>
+                    <p class="text-gray-600 mb-1">Thomas More University, Geel, Belgium</p>
+                    <p class="text-gray-700 mt-2">
+                        Currently pursuing a Bachelor's degree in Applied Computer Science, focusing on developing practical skills in software development, AI, and app development. Maintaining excellent academic performance while participating in extracurricular tech projects.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-md">2022-2023</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900">High School Diploma</h3>
+                    <p class="text-gray-600 mb-1">Sint Jozef Geel, Belgium</p>
+                    <p class="text-gray-700 mt-2">
+                        Completed my final year of secondary education in Belgium, where I adapted to a new educational system and culture while maintaining academic excellence.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item -->
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <span class="inline-block bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-md">2018-2022</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900">High School Education</h3>
+                    <p class="text-gray-600 mb-1">[Your School], Romania</p>
+                    <p class="text-gray-700 mt-2">
+                        Completed most of my secondary education in Romania with focus on mathematics and computer science. Developed a strong foundation in logical thinking and problem-solving skills. Participated in programming competitions and tech-related extracurricular activities.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-center">
+                <a href="CV_PrisacariuRobert.pdf" download class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 shadow-md">
+                    <i class="fas fa-file-download mr-2"></i> Download Full CV
+                </a>
+            </div>
+        </section>
+        
+        <!-- Contact CTA -->
+        <section class="bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-xl shadow-lg p-8 text-white fade-in">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-indigo-100 mb-6 max-w-2xl mx-auto">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out to me.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html" class="px-6 py-3 bg-white text-indigo-700 rounded-md font-medium hover:bg-gray-100 transition-all shadow-md">
+                        Contact Me
+                    </a>
+                    <a href="projects.html" class="px-6 py-3 bg-transparent border border-white text-white rounded-md font-medium hover:bg-indigo-700 transition-all">
+                        View My Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-white text-lg font-semibold mb-2">Robert Prisacariu</p>
+                    <p class="text-gray-400 text-sm">Applied Computer Science Specialist</p>
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="https://github.com/" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/prisacariu-robert" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://twitter.com/" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="mailto:contact@robertprisacariu.com" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Robert Prisacariu. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-white text-sm">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Fade-in animation for sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
