@@ -613,15 +613,11 @@ html.dark .skill-card.border-blue-500 {
 
 /* Footer */
 footer {
-    background: linear-gradient(to right, #0f172a, #1e293b);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+   
+    
     transition: background 0.3s ease, border 0.3s ease;
 }
 
-.dark footer {
-    background: linear-gradient(to right, #171923, #2d3748);
-    border-top: 1px solid rgba(255, 255, 250, 0.1);
-}
 
 /* Button Enhancements */
 .contact-button, .inline-flex {
