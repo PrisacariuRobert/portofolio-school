@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-element">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .dark .screenshot-overlay {
+            background-color: #7f9cf597; /* Lighter blue overlay in dark mode */
         }
 
         .screenshot-container:hover .screenshot-overlay {
@@ -70,6 +74,10 @@
             overflow: auto;
         }
 
+        .dark .modal {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
         .modal-content {
             max-width: 90%;
             max-height: 90vh;
@@ -91,6 +99,10 @@
             color: #3b82f6;
         }
 
+        .dark .modal-close:hover {
+            color: #7f9cf5;
+        }
+
         /* Ensure modal fades in */
         .modal.show {
             display: flex;
@@ -110,15 +122,15 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="lg:hidden flex items-center">
                     <a href="../index.html" class="flex items-center">
-                        <span class="text-xl font-medium tracking-tight text-gray-900">Robert Prisacariu</span>
-                        <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">ACS</span>
+                        <span class="text-xl font-medium tracking-tight text-gray-900 dark:text-gray-100">Robert Prisacariu</span>
+                        <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded">ACS</span>
                     </a>
                 </div>
                 <div class="hidden lg:flex lg:items-center nav-container">
                     <div class="glass-nav">
                         <a href="../index.html" class="flex items-center">
-                            <span class="text-xl font-medium tracking-tight text-gray-900">Robert Prisacariu</span>
-                            <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 rounded">ACS</span>
+                            <span class="text-xl font-medium tracking-tight text-gray-900 dark:text-gray-100">Robert Prisacariu</span>
+                            <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded">ACS</span>
                         </a>
                         <div class="flex items-center">
                             <a href="../index.html" class="nav-link text-sm font-medium">Home</a>
@@ -128,11 +140,17 @@
                             <a href="../resume.pdf" class="resume-btn ml-3 inline-flex items-center text-sm font-medium rounded transition-all duration-300">
                                 Resume
                             </a>
+                            <button id="theme-toggle" class="ml-3 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 hover:shadow-md focus:outline-none" title="Toggle Theme">
+                                <i class="fas fa-moon text-gray-600 dark:text-gray-200 text-lg transition-transform duration-300"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="lg:hidden flex items-center">
-                    <button type="button" class="text-gray-600 hover:text-indigo-600 p-2 rounded-md focus:outline-none" onclick="toggleMenu()">
+                    <button id="theme-toggle-mobile" class="mr-2 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 hover:shadow-md focus:outline-none" title="Toggle Theme">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-200 text-lg transition-transform duration-300"></i>
+                    </button>
+                    <button type="button" class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 p-2 rounded-md focus:outline-none" onclick="toggleMenu()">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
@@ -142,11 +160,11 @@
         </div>
         <div class="lg:hidden hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1 px-4">
-                <a href="../index.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Home</a>
-                <a href="../about.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">About</a>
-                <a href="../projects.html" class="nav-link active block px-3 py-2 rounded text-base font-medium bg-indigo-50 text-indigo-700">Projects</a>
-                <a href="../contact.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">Contact</a>
-                <a href="../resume.pdf" class="mt-3 block w-full px-4 py-2 text-center font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700">
+                <a href="../index.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">Home</a>
+                <a href="../about.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">About</a>
+                <a href="../projects.html" class="nav-link active block px-3 py-2 rounded text-base font-medium bg-indigo-50 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200">Projects</a>
+                <a href="../contact.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">Contact</a>
+                <a href="../resume.pdf" class="mt-3 block w-full px-4 py-2 text-center font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600">
                     Resume
                 </a>
             </div>
@@ -158,26 +176,26 @@
         <!-- Hero Section -->
         <section class="hero-gradient rounded-lg p-8 mb-10 fade-in">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Subtruck AI: <span class="text-indigo-200">Smart Subscription Management</span></h1>
-                <p class="text-lg text-indigo-100 mb-6">Simplify your subscriptions with AI-driven automation</p>
-                <a href="https://ai.subtruck.be" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-indigo-700 rounded font-medium hover:bg-gray-100 transition-all duration-300">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Subtruck AI: <span class="text-indigo-200 dark:text-indigo-100">Smart Subscription Management</span></h1>
+                <p class="text-lg text-indigo-100 dark:text-gray-300 mb-6">Simplify your subscriptions with AI-driven automation</p>
+                <a href="https://ai.subtruck.be" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-indigo-700 dark:bg-gray-700 dark:text-gray-100 rounded font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300">
                     Try Subtruck AI Now <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </section>
 
         <!-- Project Overview -->
-        <section class="bg-white rounded-lg p-8 mb-10 fade-in">
-            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900">Project Overview</h2>
+        <section class="bg-white dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Project Overview</h2>
             <div class="flex flex-col lg:flex-row">
                 <div class="lg:w-1/2 mb-6 lg:mb-0 lg:mr-6">
-                    <img src="../images/subtruck thmanail.png" alt="Subtruck AI Project" class="rounded-lg object-cover w-full h-64">
+                    <img src="../images/subtruck thmanial.png" alt="Subtruck AI Project" class="rounded-lg object-cover w-full h-64">
                 </div>
                 <div class="lg:w-1/2">
-                    <p class="text-gray-700 leading-relaxed mb-4">
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                         <strong>Subtruck AI</strong> is a <strong>subscription management app</strong> developed as part of my <strong>Web Development course</strong>, designed to simplify the way <strong>users</strong> handle their <strong>subscriptions</strong>. Users can input their <strong>subscription details</strong>, including the <strong>service name</strong> and <strong>renewal date</strong>, and <strong>Subtruck AI</strong> takes care of the rest. Powered by <strong>AI</strong>, the app automatically finds <strong>cancellation links</strong> for each subscription, allowing users to <strong>cancel</strong> with a <strong>single click</strong> by redirecting them to the appropriate <strong>cancellation page</strong>.
                     </p>
-                    <p class="text-gray-700 leading-relaxed">
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                         This project highlights my skills in <strong>full-stack development</strong> and <strong>AI integration</strong>. I also developed an <strong>iOS app</strong> for <strong>Subtruck AI</strong>, which achieved an impressive <strong>#39 ranking</strong> on the <strong>App Store</strong>, showcasing its <strong>value</strong> to users. <strong>Subtruck AI</strong> is a <strong>practical solution</strong> for managing subscriptions efficiently, demonstrating my ability to create <strong>user-focused applications</strong> with <strong>real-world impact</strong>.
                     </p>
                 </div>
@@ -185,48 +203,48 @@
         </section>
 
         <!-- Skills and Technologies -->
-        <section class="bg-white rounded-lg p-8 mb-10 fade-in">
-            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900">Skills and Technologies</h2>
+        <section class="bg-white dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Skills and Technologies</h2>
             <div class="mb-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-3">Project Development</h3>
-                <p class="text-gray-700 leading-relaxed mb-4">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">Project Development</h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                     <strong>Subtruck AI</strong> was built using <strong>Laravel</strong>, <strong>PHP</strong>, and <strong>Livewire</strong> for a <strong>robust</strong> and <strong>dynamic backend</strong>, paired with <strong>Tailwind CSS</strong> for a <strong>sleek</strong>, <strong>responsive frontend</strong>. <strong>Laravel</strong> provided a <strong>solid foundation</strong> for managing <strong>user data</strong> and <strong>subscriptions</strong>, while <strong>Livewire</strong> enabled <strong>real-time updates</strong> without page reloads, enhancing the <strong>user experience</strong>.
                 </p>
-                <p class="text-gray-700 leading-relaxed mb-4">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                     The <strong>AI component</strong> of <strong>Subtruck AI</strong> was a key focus, automating the process of finding <strong>cancellation links</strong> for <strong>subscriptions</strong>. By leveraging <strong>AI</strong>, the app identifies the <strong>subscription service</strong>, searches for its <strong>cancellation link</strong>, and stores it for <strong>seamless user access</strong>. When a user chooses to <strong>cancel</strong>, they are redirected to the <strong>cancellation page</strong> with a <strong>single click</strong>, streamlining the process.
                 </p>
-                <p class="text-gray-700 leading-relaxed">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
                     Additionally, I developed an <strong>iOS app</strong> for <strong>Subtruck AI</strong> using <strong>Swift</strong>, which reached <strong>#39</strong> on the <strong>App Store</strong>. This achievement reflects the app's <strong>utility</strong> and my ability to deliver a <strong>high-quality mobile experience</strong>. <strong>Subtruck AI</strong> showcases my growth in <strong>full-stack development</strong>, <strong>AI integration</strong>, and <strong>mobile app development</strong>.
                 </p>
             </div>
             <div>
-                <h3 class="text-lg font-medium text-gray-900 mb-3">Technologies Used</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">Technologies Used</h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm">Laravel</span>
-                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm">PHP</span>
-                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm">Livewire</span>
-                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm">Tailwind CSS</span>
-                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm">Swift</span>
-                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm">AI</span>
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">Laravel</span>
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">PHP</span>
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">Livewire</span>
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">Tailwind CSS</span>
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">Swift</span>
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">AI</span>
                 </div>
             </div>
         </section>
 
         <!-- Promotional Video -->
-        <section class="bg-black rounded-lg p-8 mb-10 fade-in">
-            <h2 class="section-heading text-2xl font-semibold mb-6 text-white">Watch Subtruck AI in Action</h2>
+        <section class="bg-black dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-white dark:text-gray-100">Watch Subtruck AI in Action</h2>
             <div class="relative" style="padding-top: 56.25%;">
                 <video class="absolute top-0 left-0 w-full h-full rounded-lg" controls preload="metadata" poster="../images/subtruck-poster.jpg">
                     <source src="../images/v14033g50000ct5elq7og65puj84ojm0.MP4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <p class="text-gray-300 text-sm mt-4 text-center">Discover how Subtruck AI simplifies subscription management.</p>
+            <p class="text-gray-300 dark:text-gray-300 text-sm mt-4 text-center">Discover how Subtruck AI simplifies subscription management.</p>
         </section>
 
         <!-- Gallery with Hover and Modal Effects -->
-        <section class="bg-white rounded-lg p-8 mb-10 fade-in">
-            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900">Project Gallery</h2>
+        <section class="bg-white dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Project Gallery</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="screenshot-container">
                     <img src="../images/Screenshot 2025-04-29 at 12.21.26.png" alt="Subtruck AI Screenshot 1" class="rounded-lg object-cover w-full h-48">
@@ -247,7 +265,7 @@
                     </div>
                 </div>
             </div>
-            <p class="text-gray-600 text-sm mt-4 text-center">Screenshots showcasing Subtruck AI's interface and features. Hover and click to view larger images.</p>
+            <p class="text-gray-600 dark:text-gray-300 text-sm mt-4 text-center">Screenshots showcasing Subtruck AI's interface and features. Hover and click to view larger images.</p>
         </section>
 
         <!-- Modal for Enlarged Images -->
@@ -259,10 +277,10 @@
         <!-- Project Carousel -->
         <section class="mb-16 fade-in">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="section-heading text-2xl font-medium text-gray-900">Explore More Projects</h2>
-                <a href="../projects.html" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                <h2 class="section-heading text-2xl font-medium text-gray-900 dark:text-gray-100">Explore More Projects</h2>
+                <a href="../projects.html" class="group text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm font-medium flex items-center">
                     View all projects
-                    <i class="fas fa-arrow-right ml-1"></i>
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
             <div class="overflow-x-auto pb-4">
@@ -279,8 +297,7 @@
                             <span class="inline-block text-xs font-semibold tracking-wider uppercase">Web Development</span>
                         </div>
                     </a>
-                  
-                    <!-- Project Card 4: Portfolio Site -->
+                    <!-- Project Card 3: Portfolio Site -->
                     <a href="../projects/figma.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('../images/thomasmoresmo3.png');">
                         <div class="absolute top-0 left-0 p-6 text-white">
                             <span class="inline-block text-xs font-semibold tracking-wider uppercase">Web Development</span>
@@ -291,15 +308,15 @@
         </section>
 
         <!-- Contact CTA -->
-        <section class="bg-indigo-600 rounded-lg p-8 text-white fade-in">
+        <section class="bg-indigo-600 dark:bg-indigo-700 rounded-lg p-8 text-white fade-in transition-all duration-300">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-2xl font-medium mb-4">Interested in Collaborating?</h2>
-                <p class="text-indigo-100 mb-6">Let's work together on innovative projects that make an impact.</p>
+                <h2 class="text-2xl font-medium mb-4 text-white dark:text-gray-100">Interested in Collaborating?</h2>
+                <p class="text-indigo-100 dark:text-gray-300 mb-6">Let's work together on innovative projects that make an impact.</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="../contact.html" class="px-6 py-3 bg-white text-indigo-700 rounded font-medium hover:bg-gray-100 transition-all duration-300">
+                    <a href="contact.html" class="px-6 py-3 bg-gray-100 text-indigo-700 dark:bg-gray-700  rounded font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300">
                         Contact Me
                     </a>
-                    <a href="../resume.pdf" class="px-6 py-3 bg-transparent border border-white text-white rounded font-medium hover:bg-indigo-500 transition-all duration-300">
+                    <a href="resume.pdf" class="px-6 py-3 bg-transparent border border-white dark:border-gray-300 text-white dark:text-gray-300 rounded font-medium hover:bg-indigo-500 dark:hover:bg-indigo-600 transition-all duration-300">
                         Download Resume
                     </a>
                 </div>
@@ -313,7 +330,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
                     <p class="text-white text-lg font-medium mb-2">Robert Prisacariu</p>
-                    <p class="text-gray-400 text-sm">Applied Computer Science Specialist</p>
+                    <p class="text-gray-400 dark:text-gray-300 text-sm">Applied Computer Science Specialist</p>
                 </div>
                 <div class="flex space-x-6 mb-4 md:mb-0">
                     <a href="https://github.com/PrisacariuRobert" class="social-icon text-gray-400 hover:text-white">
@@ -330,8 +347,8 @@
                     </a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2025 Robert Prisacariu. All rights reserved.</p>
+            <div class="border-t border-gray-800 dark:border-gray-700 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 dark:text-gray-300 text-sm">© 2025 Robert Prisacariu. All rights reserved.</p>
                 <div class="flex space-x-4 mt-4 md:mt-0">
                     <a href="../privacy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
                     <a href="../terms.html" class="text-gray-400 hover:text-white text-sm">Terms of Use</a>
@@ -354,15 +371,72 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        setTimeout(() => {
+                            entry.target.style.transitionDelay = '0ms';
+                        }, 300);
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
             
-            fadeElements.forEach(element => {
+            fadeElements.forEach((element, index) => {
+                element.style.transitionDelay = `${index * 100}ms`;
                 observer.observe(element);
             });
+
+            // Theme toggle functionality
+            const htmlElement = document.getElementById('html-element');
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            
+            if (savedTheme === 'dark') {
+                htmlElement.classList.add('dark');
+                if (themeToggle) {
+                    themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+                    themeToggle.querySelector('i').style.transform = 'rotate(360deg)';
+                }
+                if (themeToggleMobile) {
+                    themeToggleMobile.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+                    themeToggleMobile.querySelector('i').style.transform = 'rotate(360deg)';
+                }
+            }
+
+            function toggleTheme() {
+                htmlElement.classList.toggle('dark');
+                const isDark = htmlElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                const icon = themeToggle ? themeToggle.querySelector('i') : null;
+                const mobileIcon = themeToggleMobile ? themeToggleMobile.querySelector('i') : null;
+                if (isDark) {
+                    if (icon) {
+                        icon.classList.replace('fa-moon', 'fa-sun');
+                        icon.style.transform = 'rotate(360deg)';
+                    }
+                    if (mobileIcon) {
+                        mobileIcon.classList.replace('fa-moon', 'fa-sun');
+                        mobileIcon.style.transform = 'rotate(360deg)';
+                    }
+                } else {
+                    if (icon) {
+                        icon.classList.replace('fa-sun', 'fa-moon');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                    if (mobileIcon) {
+                        mobileIcon.classList.replace('fa-sun', 'fa-moon');
+                        mobileIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+            if (themeToggleMobile) {
+                themeToggleMobile.addEventListener('click', toggleTheme);
+            }
 
             // Modal functionality for screenshots
             const screenshots = document.querySelectorAll('.screenshot-container');
@@ -395,6 +469,24 @@
                 if (e.key === 'Escape' && modal.classList.contains('show')) {
                     modal.classList.remove('show');
                 }
+            });
+
+            // Project card tilt effect (same as other project pages)
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const tiltX = (y - centerY) / 20;
+                    const tiltY = (centerX - x) / 20;
+                    card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
             });
         });
 
