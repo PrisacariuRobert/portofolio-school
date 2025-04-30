@@ -161,7 +161,7 @@ body {
         transition: all 0.3s ease;
     }
     .dark .resume-btn {
-        background: #7f9cf5;
+        background: #4f46e5;
         box-shadow: 0 2px 4px rgba(127, 156, 245, 0.4);
     }
     .resume-btn:hover {
@@ -500,7 +500,7 @@ html.dark .skill-card.border-blue-500 {
 }
 
 .dark .section-heading::after {
-    background: #7f9cf5;
+    background: #4f46e5;
 }
 
 /* Profile Image */
@@ -907,11 +907,11 @@ p.text-gray-700, p.text-gray-600 {
 }
 
 .dark .bg-indigo-600 {
-    background: #7f9cf5;
+    background: #4f46e5;
 }
 
 .bg-indigo-700 {
-    background: #4338ca;
+    background: #3127a7;
     transition: background 0.3s ease;
 }
 
