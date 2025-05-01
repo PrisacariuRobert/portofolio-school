@@ -231,15 +231,17 @@
         </section>
 
         <!-- Promotional Video -->
-        <section class="bg-black dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
-            <h2 class="section-heading text-2xl font-semibold mb-6 text-white dark:text-gray-100">Watch Subtruck AI in Action</h2>
-            <div class="relative" style="padding-top: 56.25%;">
-                <video class="absolute top-0 left-0 w-full h-full rounded-lg" controls preload="metadata" poster="../images/subtruck-poster.jpg">
+        <section class="video-section mb-10 fade-in" id="videoSection">
+            <div class="video-container" id="videoContainer">
+                <video id="promoVideo" autoplay muted playsinline controls preload="metadata" poster="../images/subtruck-poster.jpg">
                     <source src="../images/v14033g50000ct5elq7og65puj84ojm0.MP4" type="video/mp4">
-                    Your browser does not support the video tag.
+                    <div class="video-fallback">
+                        Video failed to load. Please check the file path: ../images/v14033g50000ct5elq7og65puj84ojm0.MP4
+                    </div>
                 </video>
             </div>
-            <p class="text-gray-300 dark:text-gray-300 text-sm mt-4 text-center">Discover how Subtruck AI simplifies subscription management.</p>
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100 px-8 pt-8">Watch Subtruck AI in Action</h2>
+            <p class="text-gray-600 dark:text-gray-300 text-sm text-center px-8 pb-8">Discover how Subtruck AI simplifies subscription management.</p>
         </section>
 
         <!-- Gallery with Hover and Modal Effects -->
@@ -324,7 +326,7 @@
         </section>
     </main>
 
-    <footer class="py-8  mt-12">
+    <footer class="py-8 mt-12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
@@ -466,7 +468,38 @@
                 }
             });
 
-            // Project card tilt effect (same as other project pages)
+            // Video scroll-based shrink effect
+            const videoSection = document.getElementById('videoSection');
+            const videoContainer = document.getElementById('videoContainer');
+            const promoVideo = document.getElementById('promoVideo');
+
+            // Check if video loaded successfully
+            promoVideo.addEventListener('error', function() {
+                console.error('Video failed to load:', promoVideo.src);
+            });
+            promoVideo.addEventListener('loadeddata', function() {
+                console.log('Video loaded successfully:', promoVideo.src);
+            });
+
+            window.addEventListener('scroll', function() {
+                const rect = videoSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                console.log('Video Section Top:', rect.top, 'Window Height:', windowHeight);
+
+                // Scale down when the top of the section is above the top of the viewport
+                if (rect.top <= 0) {
+                    console.log('Adding shrunk class');
+                    videoSection.classList.add('shrunk');
+                    videoContainer.classList.add('shrunk');
+                } else {
+                    console.log('Removing shrunk class');
+                    videoSection.classList.remove('shrunk');
+                    videoContainer.classList.remove('shrunk');
+                }
+            });
+
+            // Project card tilt effect
             const projectCards = document.querySelectorAll('.project-card');
             projectCards.forEach(card => {
                 card.addEventListener('mousemove', e => {
