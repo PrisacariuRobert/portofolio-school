@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: #4f46e5;
+    --primary: #4659e5;
     --primary-dark: #4338ca;
     --secondary: #10b981;
     --dark: #111827;
     --light: #f9fafb;
-    --background-light: #F8F9FC;
+    --background-light: #f3f3f4;
     --background-dark: #1a202c;
     --text-light: #1e293b;
     --text-dark: #e2e8f0;
@@ -182,7 +182,7 @@ body {
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-in.visible {
@@ -613,11 +613,8 @@ html.dark .skill-card.border-blue-500 {
 
 /* Footer */
 footer {
-   
-    
     transition: background 0.3s ease, border 0.3s ease;
 }
-
 
 /* Button Enhancements */
 .contact-button, .inline-flex {
@@ -1094,4 +1091,69 @@ section.bg-gradient-to-br .max-w-3xl .flex a:hover {
 .dark section.bg-gradient-to-br .max-w-3xl .flex a:hover {
     background: #e5e7eb !important; /* Slightly darker white on hover in dark mode */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Video section styles */
+.video-section {
+    position: relative;
+    border-radius: 8px;
+    background-color: #ffffff00; /* White background for light mode */
+    overflow: hidden;
+}
+
+.dark .video-section {
+    background-color: #1f293700; /* Dark gray background for dark mode */
+}
+
+/* Video container styles */
+.video-container {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    transition: transform 1s ease, opacity 1s ease; /* Increased duration to 1s for slower scaling */
+    transform-origin: center center;
+    width: 100%;
+    min-height: 300px; /* Ensure the container has a height even if video fails */
+}
+
+.video-container.shrunk {
+    transform: scale(0.9); /* Scale down to 80% */
+    opacity: 0.9;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Title and description styles */
+.video-section h2,
+.video-section p {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.video-section.shrunk h2,
+.video-section.shrunk p {
+    opacity: 1;
+}
+
+/* Fallback styles */
+.video-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
 }
