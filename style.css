@@ -820,6 +820,9 @@ p.text-gray-700, p.text-gray-600 {
 .dark .text-orange-800 {
     color: #fb923c;
 }
+.dark .text-red-800 {
+    color: #fb3c3c;
+}
 
 /* Background Colors */
 .bg-white {
@@ -891,6 +894,9 @@ p.text-gray-700, p.text-gray-600 {
 }
 
 .dark .bg-orange-100 {
+    background: #4b5563;
+}
+.dark .bg-red-100 {
     background: #4b5563;
 }
 

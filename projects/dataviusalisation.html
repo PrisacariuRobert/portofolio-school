@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" id="html-element">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Airbnb Dashboard by Prisacariu Robert - A Qlik Sense dashboard visualizing 2023-2024 Airbnb data from Brussels, Ghent, and Antwerp to help hosts analyze competition and develop strategies">
+    <title>Airbnb Dashboard | Prisacariu Robert</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Hover effect for screenshots */
+        .screenshot-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .screenshot-container img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #4438ca97; /* Blue overlay */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark .screenshot-overlay {
+            background-color: #7f9cf597; /* Lighter blue overlay in dark mode */
+        }
+
+        .screenshot-container:hover .screenshot-overlay {
+            opacity: 1;
+        }
+
+        .screenshot-container:hover img {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .eye-icon {
+            color: white;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .screenshot-container:hover .eye-icon {
+            opacity: 1;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .dark .modal {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #3b82f6;
+        }
+
+        .dark .modal-close:hover {
+            color: #7f9cf5;
+        }
+
+        /* Ensure modal fades in */
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-10 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="lg:hidden flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <span class="text-xl font-medium tracking-tight text-gray-900 dark:text-gray-100">Prisacariu Robert</span>
+                        <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded">ACS</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex lg:items-center nav-container">
+                    <div class="glass-nav">
+                        <a href="../index.html" class="flex items-center">
+                            <span class="text-xl font-medium tracking-tight text-gray-900 dark:text-gray-100">Prisacariu Robert</span>
+                            <span class="ml-2 text-xs px-2 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded">ACS</span>
+                        </a>
+                        <div class="flex items-center">
+                            <a href="../index.html" class="nav-link text-sm font-medium">Home</a>
+                            <a href="../about.html" class="nav-link text-sm font-medium">About</a>
+                            <a href="../projects.html" class="nav-link active text-sm font-medium">Projects</a>
+                            <a href="../contact.html" class="nav-link text-sm font-medium">Contact</a>
+                            <a href="../resume.pdf" class="resume-btn ml-3 inline-flex items-center text-sm font-medium rounded transition-all duration-300">
+                                Resume
+                            </a>
+                            <button id="theme-toggle" class="ml-3 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 hover:shadow-md focus:outline-none" title="Toggle Theme">
+                                <i class="fas fa-moon text-gray-600 dark:text-gray-200 text-lg transition-transform duration-300"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:hidden flex items-center">
+                    <button id="theme-toggle-mobile" class="mr-2 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center transition-all duration-300 hover:shadow-md focus:outline-none" title="Toggle Theme">
+                        <i class="fas fa-moon text-gray-600 dark:text-gray-200 text-lg transition-transform duration-300"></i>
+                    </button>
+                    <button type="button" class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 p-2 rounded-md focus:outline-none" onclick="toggleMenu()">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-4">
+                <a href="../index.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">Home</a>
+                <a href="../about.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">About</a>
+                <a href="../projects.html" class="nav-link active block px-3 py-2 rounded text-base font-medium bg-indigo-50 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200">Projects</a>
+                <a href="../contact.html" class="nav-link block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white">Contact</a>
+                <a href="../resume.pdf" class="mt-3 block w-full px-4 py-2 text-center font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600">
+                    Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <!-- Hero Section -->
+        <section class="hero-gradient rounded-lg p-8 mb-10 fade-in">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Airbnb Dashboard: <span class="text-indigo-200 dark:text-indigo-100">Competitive Insights for Hosts</span></h1>
+                <p class="text-lg text-indigo-100 dark:text-gray-300 mb-6">Visualizing 2023-2024 Airbnb data for hosts in Brussels, Ghent, and Antwerp</p>
+                <a href="https://www.qlik.com/us/products/qlik-sense" target="_blank" class="inline-flex items-center px-6 py-3 bg-white text-indigo-700 dark:bg-gray-700 dark:text-gray-100 rounded font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300">
+                    Explore Qlik Sense <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="bg-white dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Project Overview</h2>
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-6 lg:mb-0 lg:mr-6">
+                    <img src="../images/aitbnb.png" alt="Airbnb Dashboard" class="rounded-lg object-cover w-full h-64">
+                </div>
+                <div class="lg:w-1/2">
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                        The <strong>Airbnb Dashboard</strong> is a <strong>Qlik Sense</strong> data visualization platform I developed to empower Airbnb hosts in <strong>Brussels</strong>, <strong>Ghent</strong>, and <strong>Antwerp</strong> with actionable insights. Using Airbnb data from 2023-2024, the dashboard provides a centralized interface for hosts to analyze market trends, pricing strategies, and competitor performance, enabling them to optimize their listings and improve occupancy rates.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        The project addressed the challenge of fragmented market information, which made it difficult for hosts to understand their competitive landscape. The dashboard includes visualizations such as pricing distributions, occupancy rates, guest review trends, and geographic demand patterns. Designed with a <strong>user-friendly</strong> interface, it allows hosts to filter data by city, property type, or time period, offering tailored insights to inform strategic decisions like dynamic pricing or property enhancements.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills and Technologies -->
+        <section class="bg-white dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Skills and Technologies</h2>
+            <div class="mb-6">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">My Contributions</h3>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    For the <strong>Airbnb Dashboard</strong>, I handled <strong>data preprocessing</strong>, <strong>dashboard design</strong>, and <strong>visualization development</strong> using Qlik Sense. I cleaned and structured the 2023-2024 Airbnb dataset, ensuring data integrity for accurate visualizations. I created interactive charts, including bar graphs, heatmaps, and trend lines, to highlight key metrics like average nightly rates, booking trends, and guest satisfaction scores across Brussels, Ghent, and Antwerp.
+                    </p>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    I identified key performance indicators (KPIs) relevant to hosts’ needs, such as competitive pricing and demand forecasting. Using Qlik Sense’s associative engine, I implemented dynamic filters to allow hosts to explore data by location, date range, or property attributes. I focused on creating an intuitive interface, ensuring hosts could easily navigate and derive insights to inform their strategies.
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    This project enhanced my skills in <strong>data analysis</strong>, <strong>UI/UX design for dashboards</strong>, and <strong>business intelligence</strong>. By iterating based on my own testing and feedback, I refined the dashboard to deliver a <strong>user-friendly</strong> and <strong>insightful</strong> tool that helps Airbnb hosts make data-driven decisions in a competitive market.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3">Technologies Used</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-pill px-4 py-2 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full text-sm">Qlik Sense</span>
+                </div>
+            </div>
+        </section>
+
+     
+
+        <!-- Gallery with Hover and Modal Effects -->
+        <section class="bg-white dark:bg-gray-800 rounded-lg p-8 mb-10 fade-in">
+            <h2 class="section-heading text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Project Gallery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="screenshot-container">
+                    <img src="../images/Screenshot 2025-05-02 at 23.35.27.png" alt="Airbnb Dashboard Screenshot 1" class="rounded-lg object-cover w-full h-48">
+                    <div class="screenshot-overlay">
+                        <i class="fas fa-eye eye-icon"></i>
+                    </div>
+                </div>
+                <div class="screenshot-container">
+                    <img src="../images/Screenshot 2025-05-02 at 23.35.39.png" alt="Airbnb Dashboard Screenshot 2" class="rounded-lg object-cover w-full h-48">
+                    <div class="screenshot-overlay">
+                        <i class="fas fa-eye eye-icon"></i>
+                    </div>
+                </div>
+                <div class="screenshot-container">
+                    <img src="../images/Screenshot 2025-05-02 at 23.35.49.png" alt="Airbnb Dashboard Screenshot 3" class="rounded-lg object-cover w-full h-48">
+                    <div class="screenshot-overlay">
+                        <i class="fas fa-eye eye-icon"></i>
+                    </div>
+                </div>
+                <div class="screenshot-container">
+                    <img src="../images/Screenshot 2025-05-02 at 23.35.59.png" alt="Airbnb Dashboard Screenshot 4" class="rounded-lg object-cover w-full h-48">
+                    <div class="screenshot-overlay">
+                        <i class="fas fa-eye eye-icon"></i>
+                    </div>
+                </div>
+                <div class="screenshot-container">
+                    <img src="../images/Screenshot 2025-05-02 at 23.36.08.png" alt="Airbnb Dashboard Screenshot 5" class="rounded-lg object-cover w-full h-48">
+                    <div class="screenshot-overlay">
+                        <i class="fas fa-eye eye-icon"></i>
+                    </div>
+                </div>
+              
+                </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 text-sm mt-4 text-center">Screenshots showcasing the Airbnb Dashboard’s visualizations and interface. Hover and click to view larger images.</p>
+        </section>
+
+        <!-- Modal for Enlarged Images -->
+        <div id="imageModal" class="modal">
+            <span class="modal-close">×</span>
+            <img id="modalImage" class="modal-content">
+        </div>
+
+        <!-- Project Carousel -->
+        <section class="mb-16 fade-in">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="section-heading text-2xl font-medium text-gray-900 dark:text-gray-100">Explore More Projects</h2>
+                <a href="../projects.html" class="group text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm font-medium flex items-center">
+                    View all projects
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+            <div class="overflow-x-auto pb-4">
+                <div class="flex space-x-6 min-w-max">
+                    <!-- Project Card 1: BRAGI -->
+                    <a href="../projects/bragi.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('../images/bragi.png');">
+                        <div class="absolute top-0 left-0 p-6 text-white">
+                            <span class="inline-block text-xs font-semibold tracking-wider uppercase">AI</span>
+                        </div>
+                    </a>
+                    <!-- Project Card 2: Redefine Progress -->
+                    <a href="../projects/redefine.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('../images/lstb.png');">
+                        <div class="absolute top-0 left-0 p-6 text-white">
+                            <span class="inline-block text-xs font-semibold tracking-wider uppercase">Web Development</span>
+                        </div>
+                    </a>
+                    <!-- Project Card 3: Portfolio Site -->
+                    <a href="../projects/figma.html" class="project-card w-80 h-96 flex-shrink-0 rounded-2xl shadow-sm relative bg-cover bg-center" style="background-image: url('../images/thomasmoresmo3.png');">
+                        <div class="absolute top-0 left-0 p-6 text-white">
+                            <span class="inline-block text-xs font-semibold tracking-wider uppercase">Web Development</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="hero-gradient dark:bg-indigo-700 rounded-lg p-8 text-white fade-in transition-all duration-300">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl font-medium mb-4 text-white dark:text-gray-100">Interested in Collaborating?</h2>
+                <p class="text-indigo-100 dark:text-gray-300 mb-6">Let's work together on innovative projects that make an impact.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="contact.html" class="px-6 py-3 bg-gray-100 text-indigo-900 rounded font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300">
+                        Contact Me
+                    </a>
+                    <a href="resume.pdf" class="px-6 py-3 bg-transparent border border-white dark:border-gray-300 text-white dark:text-gray-300 rounded font-medium hover:bg-indigo-500 dark:hover:bg-indigo-600 transition-all duration-300">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="nav-linktext-lg font-medium mb-2">Prisacariu Robert</p>
+                    <p class="text-gray-400 dark:text-gray-300 text-sm">Applied Computer Science Specialist</p>
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="https://github.com/PrisacariuRobert" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/robert-prisacariu-7999082a1" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://x.com/robertpris25454?s=21&t=Ibg_2i7eu_BL0v6cda_wHw" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="mailto:contact@prisacariurobert.com" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="dark:border-gray-700 mt-2 pt-2 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 dark:text-gray-300 text-sm">© 2025 Prisacariu Robert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        setTimeout(() => {
+                            entry.target.style.transitionDelay = '0ms';
+                        }, 300);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            fadeElements.forEach((element, index) => {
+                element.style.transitionDelay = `${index * 100}ms`;
+                observer.observe(element);
+            });
+
+            // Theme toggle functionality
+            const htmlElement = document.getElementById('html-element');
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            
+            if (savedTheme === 'dark') {
+                htmlElement.classList.add('dark');
+                if (themeToggle) {
+                    themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+                    themeToggle.querySelector('i').style.transform = 'rotate(360deg)';
+                }
+                if (themeToggleMobile) {
+                    themeToggleMobile.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+                    themeToggleMobile.querySelector('i').style.transform = 'rotate(360deg)';
+                }
+            }
+
+            function toggleTheme() {
+                htmlElement.classList.toggle('dark');
+                const isDark = htmlElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                const icon = themeToggle ? themeToggle.querySelector('i') : null;
+                const mobileIcon = themeToggleMobile ? themeToggleMobile.querySelector('i') : null;
+                if (isDark) {
+                    if (icon) {
+                        icon.classList.replace('fa-moon', 'fa-sun');
+                        icon.style.transform = 'rotate(360deg)';
+                    }
+                    if (mobileIcon) {
+                        mobileIcon.classList.replace('fa-moon', 'fa-sun');
+                        mobileIcon.style.transform = 'rotate(360deg)';
+                    }
+                } else {
+                    if (icon) {
+                        icon.classList.replace('fa-sun', 'fa-moon');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                    if (mobileIcon) {
+                        mobileIcon.classList.replace('fa-sun', 'fa-moon');
+                        mobileIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+            if (themeToggleMobile) {
+                themeToggleMobile.addEventListener('click', toggleTheme);
+            }
+
+            // Modal functionality for screenshots
+            const screenshots = document.querySelectorAll('.screenshot-container');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.querySelector('.modal-close');
+
+            screenshots.forEach(screenshot => {
+                screenshot.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    modalImage.src = imgSrc;
+                    modal.classList.add('show');
+                });
+            });
+
+            // Close modal on clicking the close button
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('show');
+            });
+
+            // Close modal on clicking outside the image
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                }
+            });
+
+            // Project card tilt effect
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const tiltX = (y - centerY) / 20;
+                    const tiltY = (centerX - x) / 20;
+                    card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html> 
